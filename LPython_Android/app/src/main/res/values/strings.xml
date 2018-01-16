@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">LPython_Android</string>
-
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="app_name">LPython</string>
+    <string name="tab_article">文章</string>
+    <string name="tab_video">视频</string>
+    <string name="tab_job">工作</string>
+    <string name="todo">正在开发，敬请期待</string>
 </resources>
