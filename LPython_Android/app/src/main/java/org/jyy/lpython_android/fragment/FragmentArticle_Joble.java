@@ -2,12 +2,16 @@ package org.jyy.lpython_android.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+
+import com.mikepenz.itemanimators.ScaleUpAnimator;
+import com.mikepenz.itemanimators.SlideInOutRightAnimator;
 
 import org.jyy.lpython_android.Adapter.MyRecyclerViewAdapter;
 import org.jyy.lpython_android.R;
@@ -49,8 +53,8 @@ public class FragmentArticle_Joble extends Fragment {
     }
     private void initView(View view){
         RecyclerView mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setItemAnimator(new SlideInOutRightAnimator(mRecyclerView));
         List<Integer> datas = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             datas.add(i);

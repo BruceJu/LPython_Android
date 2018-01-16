@@ -32,19 +32,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         mBottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
-        //        mBottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
-        mBottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
+        mBottomNavigationBar.setMode(BottomNavigationBar.MODE_SHIFTING);
         mBottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_RIPPLE);
-        mBottomNavigationBar.setBarBackgroundColor(R.color.blue);//set background color for navigation bar
+        mBottomNavigationBar.setBarBackgroundColor(R.color.white);//set background color for navigation bar
         mBottomNavigationBar.setInActiveColor(R.color.white);//unSelected icon color
         mBottomNavigationBar
-                .addItem(new BottomNavigationItem(R.mipmap.tab_contact_select, R.string.tab_article).setActiveColorResource(0))
-                .addItem(new BottomNavigationItem(R.mipmap.tab_home_select, R.string.tab_video).setActiveColorResource(0))
-                .addItem(new BottomNavigationItem(R.mipmap.tab_speech_select, R.string.tab_job).setActiveColorResource(0))
-                .setFirstSelectedPosition(0)
+                .addItem(new BottomNavigationItem(R.mipmap.tab_contact_select, R.string.tab_article).setActiveColorResource(R.color.colorPrimary))
+                .addItem(new BottomNavigationItem(R.mipmap.tab_more_select, R.string.tab_video).setActiveColorResource(R.color.orange))
+                .addItem(new BottomNavigationItem(R.mipmap.tab_speech_select, R.string.tab_job).setActiveColorResource(R.color.lime))
                 .initialise();
 
         mBottomNavigationBar.setTabSelectedListener(this);

@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.jyy.lpython_android.Constants;
 import org.jyy.lpython_android.R;
 
 

@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class FragmentArticle extends Fragment {
     private ArrayList<Fragment> mFragments = new ArrayList<>();
-    private CommonTabLayout mTabLayout_8;
+    private CommonTabLayout mTabLayout;
     private ViewPager mViewPager;
     private String[] mTitles = {"伯乐在线", "简书", "头条", "微信"};
     public static Activity activity;
@@ -50,6 +50,7 @@ public class FragmentArticle extends Fragment {
         if(rootView==null){
             rootView=inflater.inflate(R.layout.article_fragment, null);
             initView(rootView);
+
         }else{
             ViewGroup parent = (ViewGroup) rootView.getParent();
             if (parent != null){
@@ -69,13 +70,13 @@ public class FragmentArticle extends Fragment {
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i],0,0));
         }
-        mViewPager = (ViewPager)view.findViewById(R.id.vp_2);
+        mViewPager = (ViewPager)view.findViewById(R.id.viewpager);
         mViewPager.setAdapter(new MyPagerAdapter(mfragmentManager));
         /** indicator圆角色块 */
-        mTabLayout_8 = (CommonTabLayout)view.findViewById(R.id.tl_8);
-        mTabLayout_8.setTabData(mTabEntities);
+        mTabLayout = (CommonTabLayout)view.findViewById(R.id.topPanel);
+        mTabLayout.setTabData(mTabEntities);
 
-        mTabLayout_8.setOnTabSelectListener(new OnTabSelectListener() {
+        mTabLayout.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
                 mViewPager.setCurrentItem(position);
@@ -94,7 +95,7 @@ public class FragmentArticle extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
-                mTabLayout_8.setCurrentTab(position);
+                mTabLayout.setCurrentTab(position);
             }
 
             @Override
