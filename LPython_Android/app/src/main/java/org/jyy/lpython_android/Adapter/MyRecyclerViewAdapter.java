@@ -27,15 +27,10 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyViewHolder> {
     public MyRecyclerViewAdapter(Context context, List<Integer> datas) {
         this.datas = datas;
         this.context = context;
-        getRandomHeights(datas);
+
     }
 
-    private void getRandomHeights(List<Integer> datas) {
-        lists = new ArrayList<>();
-        for (int i = 0; i < datas.size(); i++) {
-            lists.add((int) (200 + Math.random() * 400));
-        }
-    }
+
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -47,7 +42,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyViewHolder> {
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         ViewGroup.LayoutParams params = holder.itemView.getLayoutParams();
-        params.height = lists.get(position);//把随机的高度赋予item布局
         holder.itemView.setLayoutParams(params);
         holder.mTextView.setText(position+"");
     }
