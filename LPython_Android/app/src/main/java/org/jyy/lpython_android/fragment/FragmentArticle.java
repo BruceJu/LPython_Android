@@ -17,7 +17,6 @@ import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import org.jyy.lpython_android.Entity.TabEntity;
 import org.jyy.lpython_android.R;
-import org.jyy.lpython_android.Activity.SimpleCardFragment;
 
 import java.util.ArrayList;
 
@@ -65,7 +64,7 @@ public class FragmentArticle extends Fragment {
         mFragments.add(FragmentArticle_Joble.newInstance());
         mFragments.add(FragmentArticle_JianShu.newInstance());
         mFragments.add(FragmentArticle_TouTiao.newInstance());
-        mFragments.add(SimpleCardFragment.newInstance("test"));
+        mFragments.add(FragmentArticle_TouTiao.newInstance());
 
         for (int i = 0; i < mTitles.length; i++) {
             mTabEntities.add(new TabEntity(mTitles[i],0,0));
