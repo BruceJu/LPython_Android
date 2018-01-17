@@ -1,5 +1,6 @@
 package org.jyy.lpython_android.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -46,59 +47,6 @@ public class FragmentArticle_Joble extends Fragment {
     }
 
 
-    public void Refresh() {
-        final long timeInterval = 3000;
-        Runnable runnable = new Runnable() {
-            public void run() {
-                {
-                    System.out.println("execute task");
-                    try {
-                        Thread.sleep(timeInterval);
-                        datas.clear();
-                        for (int i = 0; i < 50; i++) {
-                            datas.add(i);
-                        }
-                        materialRefreshLayout.finishRefresh();
-                        mRecyclerViewAdapter.notifyDataSetChanged();
-
-
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        };
-        Thread thread = new Thread(runnable);
-        thread.start();
-    }
-
-    public void RefreshMore() {
-        final long timeInterval = 2000;
-        Runnable runnable = new Runnable() {
-            public void run() {
-                {
-                    System.out.println("execute task");
-                    try {
-                        Thread.sleep(timeInterval);
-                        for (int i = 0; i < 50; i++) {
-                            datas.add(i);
-                        }
-                        materialRefreshLayout.finishRefreshLoadMore();
-                        mRecyclerViewAdapter.notifyDataSetChanged();
-
-
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        };
-        Thread thread = new Thread(runnable);
-        thread.start();
-    }
-
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,27 +72,61 @@ public class FragmentArticle_Joble extends Fragment {
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getActivity(), resId);
         mRecyclerView.setLayoutAnimation(animation);
         datas = new ArrayList<>();
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 20; i++) {
             datas.add(i);
         }
         mRecyclerViewAdapter = new MyRecyclerViewAdapter(getActivity(), datas);
         mRecyclerView.setAdapter(mRecyclerViewAdapter);
         materialRefreshLayout = (MaterialRefreshLayout) view.findViewById(R.id.refresh_layout);
-        materialRefreshLayout.setWaveColor(0xffffffff);
-        materialRefreshLayout.setIsOverLay(false);
+        materialRefreshLayout.setWaveColor(0xff3300);
+        materialRefreshLayout.setIsOverLay(true);
         materialRefreshLayout.setWaveShow(true);
+        materialRefreshLayout.setLoadMore(true);
         materialRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
             @Override
-            public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
-                Refresh();
+            public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
+                Handler handler =new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        datas.clear();
+                        for (int i = 0; i < 10; i++) {
+                            datas.add(i);
+                        }
+                        mRecyclerViewAdapter.notifyDataSetChanged();
+                        runLayoutAnimation(mRecyclerView);
+                        materialRefreshLayout.finishRefresh();
+                    }
+                }, 3000);
             }
 
             @Override
-            public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
+            public void onRefreshLoadMore(final MaterialRefreshLayout materialRefreshLayout) {
                 super.onRefreshLoadMore(materialRefreshLayout);
-                RefreshMore();
+                Handler handler =new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        for (int i = 0; i < 10; i++) {
+                            datas.add(i);
+                        }
+                        mRecyclerViewAdapter.notifyDataSetChanged();
+                        runLayoutAnimation(mRecyclerView);
+                        materialRefreshLayout.finishRefreshLoadMore();
+                    }
+                }, 3000);
             }
         });
 
+    }
+
+    private void runLayoutAnimation(final RecyclerView recyclerView) {
+        final Context context = recyclerView.getContext();
+        final LayoutAnimationController controller =
+                AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_from_right);
+
+        recyclerView.setLayoutAnimation(controller);
+        recyclerView.getAdapter().notifyDataSetChanged();
+        recyclerView.scheduleLayoutAnimation();
     }
 }
