@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 
 import com.cjj.MaterialRefreshLayout;
 import com.cjj.MaterialRefreshListener;
@@ -118,7 +120,9 @@ public class FragmentArticle_Joble extends Fragment {
     private void initView(View view) {
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setItemAnimator(new SlideInOutRightAnimator(mRecyclerView));
+        int resId = R.anim.layout_animation_from_right ;
+        LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(getActivity(), resId);
+        mRecyclerView.setLayoutAnimation(animation);
         datas = new ArrayList<>();
         for (int i = 0; i < 50; i++) {
             datas.add(i);
