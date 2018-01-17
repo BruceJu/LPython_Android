@@ -1,5 +1,6 @@
 package org.jyy.lpython_android.Activity;
 
+
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,10 +8,7 @@ import org.jyy.lpython_android.R;
 import org.jyy.lpython_android.fragment.FragmentArticle;
 import org.jyy.lpython_android.fragment.FragmentJob;
 import org.jyy.lpython_android.fragment.FragmentVideo;
-
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.Toolbar;
-
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 
@@ -26,12 +24,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
     private FragmentManager mFragmentManager;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         mBottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
         mBottomNavigationBar.setMode(BottomNavigationBar.MODE_SHIFTING);
         mBottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_RIPPLE);
@@ -45,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationB
 
         mBottomNavigationBar.setTabSelectedListener(this);
         setDefaultFragment();
+
     }
 
     /**

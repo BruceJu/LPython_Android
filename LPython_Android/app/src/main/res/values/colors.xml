@@ -11,4 +11,5 @@
     <color name="white">#FFFFFF</color>
     <color name="lime">#CDDC39</color>
     <color name="indicator_color">#63B8FF</color>
+    <color name="Indigo_nav_color">#4675FF</color>
 </resources>
