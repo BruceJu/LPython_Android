@@ -4,4 +4,5 @@
     <string name="tab_video">视频</string>
     <string name="tab_job">工作</string>
     <string name="todo">正在开发，敬请期待</string>
+    <string name="summary">Python是一种解释型、面向对象、动态数据类型的高级程序设计语言。Python由Guido van Rossum于1989年底发明，第一个公开发行版发行于1991年。像Perl语言一样, Python 源代码同样遵循 GPL(GNU General Public License)协议。</string>
 </resources>
