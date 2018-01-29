@@ -23,7 +23,7 @@
     * 嵌套Fragment的结构
     * 支持下来刷新和上拉加载更多  
     * 部分截图
-<div style="fload:left,margin:10px,display:inline">
+<div style="fload:left,margin:30px,display:inline">
    <img src="https://github.com/BruceJu/LPython_Android/blob/master/LPython_Android/image/index.jpg" width="250" />
    <img src="https://github.com/BruceJu/LPython_Android/blob/master/LPython_Android/image/refresh.jpg" width="250" />
    <img src="https://github.com/BruceJu/LPython_Android/blob/master/LPython_Android/image/vide0.jpg" width="250" />
